@@ -59,12 +59,17 @@ router.post('/', function(req, res /*, next*/) {
 	console.log('asldkfjladksfg');
 	grp = new Group();
 	grp.name = req.body.name;
+	grp.members.push(req.user.fbid);
 	grp.save(function(err) {
 		if(err) res.send(err);
 		else res.send({ 'group' : grp });
 	});
-	res.redirect('/add/' + grp.id);
-	console.log('i sent headers!!!');
+	u = req.user;
+	u.members.push(grp.id);
+	u.save(function(err) {
+		if(err) res.send(err);
+		else res.json({ 'user' : u });
+	});
 	// next();
 });
 
