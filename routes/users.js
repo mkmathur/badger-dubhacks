@@ -15,8 +15,9 @@ var User = mongoose.model('User', UserSchema, 'User');
 // 		}
 
 router.get('/:id', function(req, res) {
-	User.findOne({ 'fbid': req.params.id }, function (err, user) {
-		res.json({ 'user' : user });
+	console.log(req.params.id);
+	User.findOne({ 'fbid': req.params.id }, function (err, u) {
+		res.json({ 'user' : u });
 	});
 });
 
