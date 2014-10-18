@@ -33,6 +33,7 @@ app.use(passport.session());
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/groups', groups);
 
 // DATABASE
 var dbURI;
