@@ -4,7 +4,6 @@
 	Schema = mongoose.Schema;
 
 	TaskSchema = new Schema({
-		id: Number,
 		name: String,
 		owner: Number,
 		owners: [Number],
