@@ -42,11 +42,13 @@ var setHeaders = function(req, res, next) {
     return next();
 }
 
-app.use(setHeaders());
-app.use('/', setHeaders, routes);
-app.use('/users', setHeaders, users);
-app.use('/groups', setHeaders, groups);
-app.use('/tasks', setHeaders, tasks);
+routes.use(setHeaders());
+groups.use(setHeaders());
+
+app.use('/', routes);
+app.use('/users', users);
+app.use('/groups', groups);
+app.use('/tasks', tasks);
 
 
 
