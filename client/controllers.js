@@ -136,5 +136,5 @@ myApp.controller('Controller', ['$scope', '$http', '$location', function($scope,
 						    $scope.tasks[taskId] = data;
 						  });
 			    }
-			}
+			});
 }]);
