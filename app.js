@@ -30,8 +30,7 @@ app.use('/users', users);
 
 // DATABASE
 var dbURI;
-dbURI = 'mongodb://localhost/badger' 
-// dbURI = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL;
+dbURI = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/badger' ;
 
 mongoose.connect(dbURI);
 
