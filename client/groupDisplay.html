@@ -17,7 +17,7 @@
       <h1 ng-init="getGroupData()">{{group.name}}</h1>
       <hr/>
       <table>
-        <tr ng-repeat="task in group.userTasks" ng-class="groupListItem" class="task_container">
+        <tr ng-repeat="task in group.tasks" ng-class="groupListItem" class="task_container">
           <td>{{task.name}}</td>
           <td>{{task.nextDue}}</td>
         </tr>
