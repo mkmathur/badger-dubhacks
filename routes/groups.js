@@ -36,7 +36,7 @@ router.post('/', function(req, res) {
 	grp.name = req.body.name;
 	grp.save(function(err) {
 		if(err) res.send(err);
-		else res.send('response' : 'group created');
+		else res.json({'response' : 'group created'});
 	});
 });
 
