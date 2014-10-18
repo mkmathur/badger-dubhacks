@@ -2,13 +2,36 @@ body{
 	background-color: #8C8CFF;
 	text-align: center;
 	height: 100%;
+	color: white;
+	font-family: "Helvetica Neue", sans-serif;
 }
 
 button{
-	border-radius: 10px;
 	height: 3em;
 	width: 33%;
 	top: 45%;
 	left: 33%;
 	position: absolute;
+	cursor: pointer;
+}
+
+form > *{
+	display: block;
+}
+
+label{
+	font-weight: bold;
+	font-size: 1.5em;
+	margin: 1em;
+	vertical-align: bottom;
+}
+
+input, select{
+	margin-left: 1em;
+	height: 2em;
+}
+
+button, input, select{
+	border-radius: 10px;
+	outline: none;
 }
