@@ -1,0 +1,77 @@
+SPEC
+
+Access API at http://aqueous-earth-8550.herokuapp.com/
+
+User IDs are strings
+
+GET /auth/facebook
+	Logs into Facebook! 
+
+GET /auth/facebook/callback
+	Success goes to /success
+	Failure goes back to '/'
+
+GET /success
+	{ 	"user" : {
+			"_id":"54427d0f27d5e1000086d8ac",
+			"name" : "Mallika Mathur",
+			"fbid" : "10152402158866724",
+			"__v" : 0,
+			"groups" : []
+		}
+	}
+
+GET /groups/:group_id/
+	requires: logged in and member of that group
+	gives the info for the group with id group_id in the format 
+	{
+		name: "Apartment",
+		members: list of user IDs
+		tasks: list of task IDs
+	}
+
+POST /groups/
+	requires: logged in 
+	Form needed:
+		name: the name of the group 
+	creates a new group with the given name
+
+GET /users/:user_id/
+	{"user":{"_id":"54427d0f27d5e1000086d8ac","name":"Mallika Mathur","fbid":"10152402158866724","__v":0,"groups":[]}}
+
+GET /tasks/:task_id
+	returns a task in the format  
+	{
+		"name" : "clean the kitchen",
+		"comments" : ["remember the microwave", "please clean the fridge"],
+		"nextDue" : October 20th, 2014 ????
+		"recurrence": 7 days???
+		"owner" : "Jack",
+		"potentialOwners" : ["Danny", "Jack", "Mallika", "Logan"] 
+	}
+
+POST /groups/group_id/task
+	give me a form with
+		name: "do the dishes"
+		nextDue: Date (REQUIRES date in future)
+		recurrence: "DAILY"
+	and i'll create a task in the given group and return a taskID
+
+POST /tasks/task_id/comment
+	need a form with
+		comment
+	will add comment to the task
+
+POST /tasks/task_id/user_id
+	will add the user_id to the potentialOwners list of the task 
+
+POST /tasks/task_id/complete
+	completes the task; updates the due date and owner
+
+
+
+
+
+
+
+

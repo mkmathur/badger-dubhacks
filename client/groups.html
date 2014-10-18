@@ -11,19 +11,17 @@
     <title>Title Here</title>
   </head>
 
-  <body ng-controller="Controller" ng-init="initUserData()">
+  <body ng-controller="Controller" ng-init="initUserData()" class="content_container">
   	<div>Hello {{user.name}}, you're logged in! And beautiful.</div>
   	<ul>
   		<li ng-repeat="group in user.groups" ng-class="groupListItem">
   			<a class="groupName" href="tasks.html" ng-click="setGroup(group.name)">{{group.name}}</a>
   			<div class="newTasksNum">{{group.newTasks + " new tasks"}}</div>
 	  	</li>
-	  	<li>
-	  		<form>
-	  			<label for="name">Group Name<input type="text" name="name" id="groupNameInput"/></label>
-	  			<button id="createNewGroup" ng-click="createNewGroup()">Create New Group</button>
-	  		</form>
-	  	</li>
   	</ul>
+    <form>
+      <label for="name">Group Name<input type="text" name="name" id="groupNameInput"/></label>
+      <button id="createNewGroup" ng-click="createNewGroup()">Create New Group</button>
+    </form>
   </body>
 </html>
