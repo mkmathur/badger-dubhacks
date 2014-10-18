@@ -137,4 +137,6 @@ myApp.controller('Controller', ['$scope', '$http', '$location', function($scope,
 						  });
 			    }
 			});
+	}
+	
 }]);
