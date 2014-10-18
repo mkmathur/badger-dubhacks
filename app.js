@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(function(req, res, next) {
+app.all('/', function(req, res, next) {
     res.setHeader("Access-Control-Allow-Headers", "Content-type");
     res.setHeader("Access-Control-Allow-Credentials", "true");
     if(req.headers.origin == "localhost") {
