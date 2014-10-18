@@ -2,6 +2,8 @@ SPEC
 
 Access API at http://aqueous-earth-8550.herokuapp.com/
 
+User IDs are strings
+
 GET /auth/facebook
 	Logs into Facebook! 
 
@@ -11,10 +13,6 @@ GET /auth/facebook/callback
 
 GET /success
 	'success!'
-
-GET /groups
-	only works if you're logged in
-	gives back a list of the groups the user is in 
 
 GET /groups/:group_id/
 	requires: logged in and member of that group
@@ -31,24 +29,15 @@ POST /groups/
 		name: the name of the group 
 	creates a new group with the given name
 
-/users/:user_id/name
-	GET returns the name associated with user_id
-	POST needs a form with name: the user's name
-
-/users/:user_id/phone
-	GET returns the phone # associated with user_id
-	POST num: the user's phone number
-
-/users/:user_id/email
-	GET returns the email address associated with user_id
-	POST email: the user's email address
-
-/users/:user_id/groups
-	GET returns the list of groups associated with user_id
-
-/users/:user_id/preferences
-	GET returns preferences???
-	POST ?????
+GET /users/:user_id/
+	returns user info in format
+	{
+		name:
+		phone:
+		email:
+		groups:
+		preferences:
+	}
 
 GET /tasks/:task_id
 	returns a task in the format  
@@ -64,7 +53,7 @@ GET /tasks/:task_id
 POST /groups/group_id/task
 	give me a form with
 		name: "do the dishes"
-		nextDue: Date
+		nextDue: Date (REQUIRES date in future)
 		recurrence: "DAILY"
 	and i'll create a task in the given group and return a taskID
 
