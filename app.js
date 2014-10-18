@@ -10,6 +10,8 @@ var session = require('express-session');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var groups = require('./routes/groups');
+var tasks = require('./routes/tasks');
 
 var app = express();
 

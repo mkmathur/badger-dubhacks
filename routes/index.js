@@ -22,11 +22,9 @@ passport.use(new FacebookStrategy({
   },
   function(accessToken, refreshToken, profile, done) {
 	User.findOne({ 'fbid': profile.id }, function (err, user) {
-		console.log('profile.id:'+profile.id);
 		if(err) {
 			done(err, profile);
 		} else if(user) {
-			console.log('user.fbid:'+user.fbid);
 			done(null, user);
 		} else {
 			var u = new User();
@@ -35,7 +33,6 @@ passport.use(new FacebookStrategy({
 			if(profile.emails != null && profile.emails.length > 0) {
 				u.email = profile.emails.get(0).value;
 			}
-			console.log('u.fbid:'+u.fbid+'; name:'+u.name);
 			u.save(function(err) {
 				if(err) {
 					console.log('error saving user');
@@ -50,13 +47,10 @@ passport.use(new FacebookStrategy({
 ));
 
 passport.serializeUser(function(user, done) {
-	console.log('THE SERIOSLAHHDSKSD');
-	console.log(user);
   done(null, user._id);
 });
 
 passport.deserializeUser(function(id, done) {
-	console.log('de-id:'+id);
     done(null, id);
 });
 
