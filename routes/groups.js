@@ -61,6 +61,7 @@ router.post('/', function(req, res) {
 		if(err) res.send(err);
 		else res.json({ 'group' : grp });
 	});
+	console.log('i sent headers!!!' + res.headersSent);
 });
 
 router.get('/', function(req, res) {
