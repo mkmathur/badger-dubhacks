@@ -6,6 +6,29 @@ var Group = mongoose.model('Group', GroupSchema, 'Group');
 var UserSchema = require('../models/user');
 var User = mongoose.model('User', UserSchema, 'User');
 
+// POST /groups/add/:gid
+//     adds the user to the group
+
+router.post('/add/:gid', function(req, res) {
+	Group.findById(req.params.gid, function(err, g) {
+		if (err) res.send(err);
+		else {
+			g.members.push(req.user.fbid);
+			g.save(function(err) {
+				if(err) res.send(err);
+				else res.json({ 'group' : g });
+			});
+		}
+	});
+	u = req.user;
+	u.members.push(req.body.gid);
+	u.save(function(err) {
+		if(err) res.send(err);
+		else res.json({ 'user' : u });
+	});
+
+});
+
 // SPECCCCCC
 // GET /:group_id/
 // requires: logged in & member of group
@@ -44,28 +67,7 @@ router.get('/', function(req, res) {
 	res.json({ 'groups' : req.user.groups });
 });
 
-// POST /groups/add/:gid
-//     adds the user to the group
 
-router.post('/add/:gid', function(req, res) {
-	Group.findById(req.params.gid, function(err, g) {
-		if (err) res.send(err);
-		else {
-			g.members.push(req.user.fbid);
-			g.save(function(err) {
-				if(err) res.send(err);
-				else res.json({ 'group' : g });
-			});
-		}
-	});
-	u = req.user;
-	u.members.push(req.body.gid);
-	u.save(function(err) {
-		if(err) res.send(err);
-		else res.json({ 'user' : u });
-	});
-
-});
 
 // POST /groups/group_id/task
 // give me a form with
