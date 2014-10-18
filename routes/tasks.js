@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var TaskSchema = require('../models/group');
+var TaskSchema = require('../models/task');
 var Task = mongoose.model('Task', TaskSchema, 'Task');
 
 // SPECKYSPECK
