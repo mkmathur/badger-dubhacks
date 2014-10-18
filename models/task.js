@@ -6,13 +6,14 @@
 	TaskSchema = new Schema({
 		name: String,
 		owner: Number,
-		owners: [Number],
+		owners: [String],
 		dueDate: Date,
 		schedule: Number,
 		comments: [{
-			user: Number,
+			user: String,
 			comment: String
-		}]
+		}],
+		complete: Boolean
 	});
 
 	module.exports = mongoose.model('Task', TaskSchema);
