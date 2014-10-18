@@ -55,6 +55,7 @@ router.get('/:id', function(req, res) {
 // makes group with given name
 
 router.post('/', function(req, res) {
+	console.log('asldkfjladksfg');
 	res.setHeader("Access-Control-Allow-Origin", "http://mkmathur.github.io");
 	grp = new Group();
 	grp.name = req.body.name;
