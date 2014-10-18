@@ -12,7 +12,14 @@ GET /auth/facebook/callback
 	Failure goes back to '/'
 
 GET /success
-	'success!'
+	{ 	"user" : {
+			"_id":"54427d0f27d5e1000086d8ac",
+			"name" : "Mallika Mathur",
+			"fbid" : "10152402158866724",
+			"__v" : 0,
+			"groups" : []
+		}
+	}
 
 GET /groups/:group_id/
 	requires: logged in and member of that group
