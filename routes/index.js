@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-var user = require('../class/user');
+var user = require('../models/user');
+var mongoose = require('mongoose');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -18,8 +19,20 @@ passport.use(new FacebookStrategy({
     callbackURL: "http://0.0.0.0:3000/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-//  user.findOrCreate(profile, done);
-    done(null, profile);
+	var User = require('../models/user');
+	User.findOne({ 'id': profile.id }, function (err, user) {
+		if(err) {
+			done(err, profile);
+		} else if(user) {
+			done(null, profile);
+		} else {
+			var u = new User();
+			u.id = profile.id;
+			u.name = profile.displayName;
+			u.email = profile.emails.get(0).value;
+		    done(null, profile);
+		}
+	});
   }
 ));
 
