@@ -36,6 +36,13 @@ passport.use(new FacebookStrategy({
 				u.email = profile.emails.get(0).value;
 			}
 			console.log('u.fbid:'+u.fbid+'; name:'+u.name);
+			u.save(function(err) {
+				if(err) {
+					console.log('error saving user');
+				} else {
+					console.log('successfully saved user');
+				}
+			});
 		    done(null, u);
 		}
 	});
@@ -66,8 +73,9 @@ router.get('/auth/facebook/callback',
                                       failureRedirect: '/' }));
 
 router.get('/success', function(req, res) {
-	console.log('req.user:'+req.user);
-	res.send('success!');
+	User.findById(req.user, function(err, user) { 
+		res.json({ 'user' : user });
+	});
 });
 
 module.exports = router;
