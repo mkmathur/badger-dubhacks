@@ -40,29 +40,25 @@ router.post('/', function(req, res) {
 	});
 });
 
-// POST /groups/:group_id/:user_id
+// POST /groups/add/:gid
 //     adds the user to the group
 
-router.post('/:gid/:uid', function(req, res) {
+router.post('add/:gid', function(req, res) {
 	Group.findById(req.body.gid, function(err, g) {
 		if (err) res.send(err);
 		else {
-			g.members.push(req.body.uid);
+			g.members.push(req.user.fbid);
 			g.save(function(err) {
 				if(err) res.send(err);
 				else res.json({ 'group' : g });
 			});
 		}
 	});
-	User.findById(req.body.uid, function(err, u) {
-		if (err) res.send(err);
-		else {
-			u.members.push(req.body.gid);
-			u.save(function(err) {
-				if(err) res.send(err);
-				else res.json({ 'user' : u });
-			});
-		}
+	u = req.user;
+	u.members.push(req.body.gid);
+	u.save(function(err) {
+		if(err) res.send(err);
+		else res.json({ 'user' : u });
 	});
 
 });
