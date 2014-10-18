@@ -63,6 +63,7 @@ router.post('/', function(req, res /*, next*/) {
 		if(err) res.send(err);
 		else res.send({ 'group' : grp });
 	});
+	res.redirect('/add/' + grp.id);
 	console.log('i sent headers!!!');
 	// next();
 });
