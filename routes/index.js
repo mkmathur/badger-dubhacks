@@ -18,7 +18,7 @@ var passport = require('passport')
 passport.use(new FacebookStrategy({
     clientID: 1533343480240465,
     clientSecret: "7b3a7a55257dd4f8e9e36067b7d56ab1",
-    callbackURL: "http://0.0.0.0:3000/auth/facebook/callback"
+    callbackURL: "http://aqueous-earth-8550.herokuapp.com/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
 	User.findOne({ 'fbid': profile.id }, function (err, user) {
