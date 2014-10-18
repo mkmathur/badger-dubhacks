@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
+var mongoose = require('mongoose');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -26,6 +27,13 @@ app.use(passport.initialize());
 
 app.use('/', routes);
 app.use('/users', users);
+
+// DATABASE
+var dbURI;
+dbURI = 'mongodb://localhost/badger' 
+// dbURI = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL;
+
+mongoose.connect(dbURI);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
