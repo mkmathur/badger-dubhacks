@@ -83,7 +83,6 @@ myApp.controller('Controller', ['$scope', '$http', '$location', function($scope,
 	}
 
 	$scope.createNewGroup = function() {
-		console.log("create new group")
 		var groupName = document.getElementById("groupNameInput").value;
 		var url = baseAPIUrl + "/groups";
 		$http.post(url, groupName).
@@ -108,6 +107,8 @@ myApp.controller('Controller', ['$scope', '$http', '$location', function($scope,
 			    // this callback will be called asynchronously
 			    // when the response is available
 			    $scope.user = data.user;
+			    console.log($scope.user);
+			    console.log("worked")
 			  });
 			}
 	}
