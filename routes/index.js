@@ -21,6 +21,7 @@ passport.use(new FacebookStrategy({
   function(accessToken, refreshToken, profile, done) {
 	var User = require('../models/user');
 	User.findOne({ 'id': profile.id }, function (err, user) {
+		console.log('profile.id:'+profile.id);
 		if(err) {
 			done(err, profile);
 		} else if(user) {
@@ -29,7 +30,9 @@ passport.use(new FacebookStrategy({
 			var u = new User();
 			u.id = profile.id;
 			u.name = profile.displayName;
-			u.email = profile.emails.get(0).value;
+			if(profile.emails != null && profile.emails.length > 0) {
+				u.email = profile.emails.get(0).value;
+			}
 		    done(null, profile);
 		}
 	});
@@ -65,7 +68,7 @@ router.get('/auth/facebook/callback',
                                       failureRedirect: '/' }));
 
 router.get('/success', function(req, res) {
-	res.send('success!');
+	console.log('req.user:'+req.user);
 });
 
 module.exports = router;

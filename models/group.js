@@ -10,6 +10,6 @@
 		tasks: [Number]
 	});
 
-	module.exports = mongoose.module('Group', GroupSchema);
+	module.exports = mongoose.model('Group', GroupSchema);
 
 }).call(this);

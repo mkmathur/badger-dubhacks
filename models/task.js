@@ -16,6 +16,6 @@
 		}]
 	});
 
-	module.exports = mongoose.module('Task', TaskSchema);
+	module.exports = mongoose.model('Task', TaskSchema);
 
 }).call(this);
