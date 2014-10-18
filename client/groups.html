@@ -14,7 +14,7 @@
   <body ng-controller="Controller" ng-init="initUserData()">
   	<div>Hello {{user.name}}, you're logged in! And beautiful.</div>
   	<ul>
-  		<li ng-repeat="group in groups" ng-class="groupListItem">
+  		<li ng-repeat="group in user.groups" ng-class="groupListItem">
   			<a class="groupName" href="tasks.html" ng-click="setGroup(group.name)">{{group.name}}</a>
   			<div class="newTasksNum">{{group.newTasks + " new tasks"}}</div>
 	  	</li>
