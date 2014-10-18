@@ -107,10 +107,7 @@ myApp.controller('Controller', ['$scope', '$http', '$location', function($scope,
 				success(function(data) {
 			    // this callback will be called asynchronously
 			    // when the response is available
-			    getGroups(function() {
-			    	// TODO: get user name and redirect to groups page
-			    	$scope.user = JSON.parse(data).user;
-			    });
+			    $scope.user = JSON.parse(data).user;
 			  });
 			}
 	}
