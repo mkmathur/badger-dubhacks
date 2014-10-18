@@ -4,7 +4,7 @@
 	Schema = mongoose.Schema;
 
 	UserSchema = new Schema({
-		id: Number,
+		id: String,
 		name: String,
 		phone: String,
 		email: String,
@@ -15,6 +15,6 @@
 		}
 	});
 
-	module.exports = mongoose.module('User', UserSchema);
+	module.exports = mongoose.model('User', UserSchema);
 
 }).call(this);
