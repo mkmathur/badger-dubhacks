@@ -37,8 +37,7 @@ app.use('/groups', groups);
 
 // DATABASE
 var dbURI;
-// dbURI = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/badger' ;
-dbURI = 'mongodb://localhost/badger' ;
+dbURI = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/badger' ;
 
 mongoose.connect(dbURI);
 
