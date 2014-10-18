@@ -42,7 +42,7 @@ var setHeaders = function(req, res, next) {
     return next();
 }
 
-routes.use(setHeaders);
+routes.use(setHeaders());
 app.use('/', routes);
 app.use('/users', users);
 app.use('/groups', groups);
