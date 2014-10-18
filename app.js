@@ -32,7 +32,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(function(req, res, next) {
-    res.setHeader("Access-Control-Allow-Headers", "true");
+    res.setHeader("Access-Control-Allow-Headers", "content-type");
     res.setHeader("Access-Control-Allow-Credentials", "true");
     if(req.headers.origin == "localhost") {
         res.setHeader("Access-Control-Allow-Origin", "http://localhost");
