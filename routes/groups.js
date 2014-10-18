@@ -9,7 +9,7 @@ var User = mongoose.model('User', UserSchema, 'User');
 // POST /groups/add/:gid
 //     adds the user to the group
 
-router.post('/add/:gid', function(req, res) {
+router.post('/add/:gid', function(req, res, next) {
 	Group.findById(req.params.gid, function(err, g) {
 		if (err) res.send(err);
 		else {
@@ -26,7 +26,7 @@ router.post('/add/:gid', function(req, res) {
 		if(err) res.send(err);
 		else res.json({ 'user' : u });
 	});
-
+	next();
 });
 
 // SPECCCCCC
@@ -39,13 +39,14 @@ router.post('/add/:gid', function(req, res) {
 //     tasks: list of int ids
 // }
 
-router.get('/:id', function(req, res) {
+router.get('/:id', function(req, res, next) {
 	u = req.user;
 	id = req.params.id;
 	Group.findById(id, function (err, g) {
 		if (err) res.send(err);
 		else res.json({ 'group' : g });
 	});
+	next();
 });
 
 // POST /groups/
@@ -54,20 +55,21 @@ router.get('/:id', function(req, res) {
 //     name: the name of the group
 // makes group with given name
 
-router.post('/', function(req, res) {
+router.post('/', function(req, res, next) {
 	console.log('asldkfjladksfg');
-	res.setHeader("Access-Control-Allow-Origin", "http://mkmathur.github.io");
 	grp = new Group();
 	grp.name = req.body.name;
 	grp.save(function(err) {
 		if(err) res.send(err);
-		else res.json({ 'group' : grp });
+		else res.send({ 'group' : grp });
 	});
 	console.log('i sent headers!!!' + res.headersSent);
+	next();
 });
 
-router.get('/', function(req, res) {
+router.get('/', function(req, res, next) {
 	res.json({ 'groups' : req.user.groups });
+	next();
 });
 
 
