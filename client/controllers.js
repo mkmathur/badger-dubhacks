@@ -121,4 +121,23 @@ myApp.controller('Controller', ['$scope', '$http', '$location', function($scope,
 			  });
 			}
 	}
+
+	$scope.initTasksData = function() {
+		$http.get(baseAPIUrl + "/groups/" + $scope.group.id, {withCredentials: true}).
+				success(function(data) {
+			    // this callback will be called asynchronously
+			    // when the response is available
+			    $scope.tasks = {};
+			    for (var taskId in data.tasks) {
+			    	$http.get(baseAPIUrl + "/tasks", {withCredentials: true}).
+							success(function(data) {
+						    // this callback will be called asynchronously
+						    // when the response is available
+						    $scope.tasks[taskId] = data;
+						  });
+			    }
+			}
+			  });
+			}
+	}
 }]);
