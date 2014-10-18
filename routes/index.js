@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+var user = require('../class/user');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -17,7 +18,8 @@ passport.use(new FacebookStrategy({
     callbackURL: "http://0.0.0.0:3000/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-    done(null, profile);
+    user.findOrCreate(profile);
+    done(null, profile); // FIND/CREATE USER HERE
   }
 ));
 
