@@ -31,6 +31,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(function(req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    return next();
+});
+
 app.use('/', routes);
 app.use('/users', users);
 app.use('/groups', groups);
