@@ -40,6 +40,10 @@ router.post('/', function(req, res) {
 	});
 });
 
+router.get('/', function(req, res) {
+	res.json({ 'groups' : req.user.groups });
+});
+
 // POST /groups/add/:gid
 //     adds the user to the group
 
@@ -70,15 +74,5 @@ router.post('/add/:gid', function(req, res) {
 //     recurrence: "DAILY"
 // and i'll create a task in the given group and return a taskID
 
-
-
-/*
-router.get('/:id', function(req, res) {
-	console.log(req.params.id);
-	Group.findOne({ 'fbid': req.params.id }, function (err, u) {
-		res.json({ 'user' : u });
-	});
-});
-*/
 
 module.exports = router;
