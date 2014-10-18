@@ -4,10 +4,23 @@ html, body, form{
 	margin: 0;
 }
 
+*{
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+}
+
 body{
-	background-color: #8C8CFF;
-	color: white;
-	font-family: "Helvetica Neue", sans-serif;
+	background-color: white;
+	color: black;
+}
+
+hr{
+	height: 0.3em;
+	background-color: #A2A0A0;
+	border: none;
+}
+
+li{
+	list-style-type: none;
 }
 
 h1{
@@ -36,6 +49,11 @@ label{
 input, select, button{
 	height: 2em;
 	width: 100%;
+	color: 606161;
+	background-color: #CECECE;
+	border-radius: 10px;
+	outline: none;
+
 }
 
 input, select, button, label{
@@ -51,19 +69,14 @@ form.newTask > label > *{
 	height: 100%;
 }
 
-button, input, select{
-	border-radius: 10px;
-	outline: none;
-}
-
 input, select{
 	font-size: 1.3em;
 }
 
 button{
 	width: 100%;
+	background-color: gray;
 	margin-top: 1em;
-	background-color: #8080FF;
 	font-size: 1.5em;
 	font-weight: bold;
 	color: white;
@@ -72,7 +85,7 @@ button{
 }
 
 button:hover{
-	background-color: #B3B3FF;
+	background-color: #A2A0A0;
 }
 
 
