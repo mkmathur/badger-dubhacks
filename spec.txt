@@ -4,14 +4,20 @@ Access API at http://aqueous-earth-8550.herokuapp.com/
 
 User IDs are strings
 
-GET /auth/facebook
+# GET /auth/facebook
++ Response 200 (application/json)
+
 	Logs into Facebook! 
 
-GET /auth/facebook/callback
+# GET /auth/facebook/callback
++ Response 200 (application/json)
+
 	Success goes to /success
 	Failure goes back to '/'
 
-GET /success
+# GET /success
++ Response 200 (application/json)
+
 	{ 	"user" : {
 			"_id":"54427d0f27d5e1000086d8ac",
 			"name" : "Mallika Mathur",
@@ -21,7 +27,9 @@ GET /success
 		}
 	}
 
-GET /groups/:group_id/
+# GET /groups/:group_id/
++ Response 200 (application/json)
+
 	requires: logged in and member of that group
 	gives the info for the group with id group_id in the format 
 	{
@@ -36,10 +44,14 @@ POST /groups/
 		name: the name of the group 
 	creates a new group with the given name
 
-GET /users/:user_id/
+# GET /users/:user_id/
++ Response 200 (application/json)
+
 	{"user":{"_id":"54427d0f27d5e1000086d8ac","name":"Mallika Mathur","fbid":"10152402158866724","__v":0,"groups":[]}}
 
-GET /tasks/:task_id
+# GET /tasks/:task_id
++ Response 200 (application/json)
+
 	returns a task in the format  
 	{
 		"name" : "clean the kitchen",
@@ -50,22 +62,30 @@ GET /tasks/:task_id
 		"potentialOwners" : ["Danny", "Jack", "Mallika", "Logan"] 
 	}
 
-POST /groups/group_id/task
+# POST /groups/group_id/task
++ Response 200 (application/json)
+
 	give me a form with
 		name: "do the dishes"
 		nextDue: Date (REQUIRES date in future)
 		recurrence: "DAILY"
 	and i'll create a task in the given group and return a taskID
 
-POST /tasks/task_id/comment
+# POST /tasks/task_id/comment
++ Response 200 (application/json)
+
 	need a form with
 		comment
 	will add comment to the task
 
-POST /tasks/task_id/user_id
+# POST /tasks/task_id/user_id
++ Response 200 (application/json)
+
 	will add the user_id to the potentialOwners list of the task 
 
-POST /tasks/task_id/complete
+# POST /tasks/task_id/complete
++ Response 200 (application/json)
+
 	completes the task; updates the due date and owner
 
 

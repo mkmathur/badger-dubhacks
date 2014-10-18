@@ -63,8 +63,12 @@ router.get('/auth/facebook', passport.authenticate('facebook'));
 // access was granted, the user will be logged in.  Otherwise,
 // authentication has failed.
 router.get('/auth/facebook/callback', 
-  passport.authenticate('facebook', { successRedirect: '/success',
+  passport.authenticate('facebook', { successRedirect: '/grppage',
                                       failureRedirect: '/' }));
+
+router.get('/grppage', function(req, res) {
+	res.redirect('http://mkmathur.github.io/badger/client/groups.html');
+});
 
 router.get('/success', function(req, res) {
 	User.findById(req.user, function(err, user) { 
