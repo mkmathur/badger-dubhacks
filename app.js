@@ -32,7 +32,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(function(req, res, next) {
-    res.setHeader("Access-Control-Allow-Origin", "*");
+    if(req.headers.origin == "localhost") {
+        res.setHeader("Access-Control-Allow-Origin", "localhost");
+    }else{
+        res.setHeader("Access-Control-Allow-Origin", "mkmathur.github.io");
+    }
     return next();
 });
 
