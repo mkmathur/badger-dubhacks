@@ -1,9 +1,15 @@
+html, body, form{
+	height: 100%;
+}
+
 body{
 	background-color: #8C8CFF;
-	text-align: center;
-	height: 100%;
 	color: white;
 	font-family: "Helvetica Neue", sans-serif;
+}
+
+body, div, form{
+	text-align: center;
 }
 
 button{
@@ -20,18 +26,29 @@ form > *{
 }
 
 label{
+	width: 80%;
 	font-weight: bold;
 	font-size: 1.5em;
 	margin: 1em;
-	vertical-align: bottom;
+	text-align: right;
 }
 
 input, select{
 	margin-left: 1em;
 	height: 2em;
+	width: 40%;
+}
+
+form.newTask > *, select.newTask{
+	height: 15%;
+}
+
+form.newTask > label > *{
+	height: 100%;
 }
 
 button, input, select{
 	border-radius: 10px;
+	font-size: 1.4em;
 	outline: none;
 }
