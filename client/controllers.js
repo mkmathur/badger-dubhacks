@@ -102,7 +102,7 @@ myApp.controller('Controller', ['$scope', '$http', '$location', function($scope,
 
 	$scope.initUserData = function() {
 		if (!$scope.user) {
-			$http.get(baseAPIUrl + "/success").
+			$http.get(baseAPIUrl + "/success", {withCredentials: true}).
 				success(function(data) {
 			    // this callback will be called asynchronously
 			    // when the response is available
