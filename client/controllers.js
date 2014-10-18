@@ -83,6 +83,7 @@ myApp.controller('Controller', ['$scope', '$http', '$location', function($scope,
 	}
 
 	$scope.createNewGroup = function() {
+		console.log("create new group")
 		var groupName = document.getElementById("groupNameInput").value;
 		var url = baseAPIUrl + "/groups";
 		$http.post(url, groupName).
@@ -101,7 +102,6 @@ myApp.controller('Controller', ['$scope', '$http', '$location', function($scope,
 	}
 
 	$scope.initUserData = function() {
-		alert("init")
 		if (!$scope.user) {
 			$http.get(baseAPIUrl + "/success").
 				success(function(data) {
