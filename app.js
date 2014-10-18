@@ -48,6 +48,17 @@ app.use(function(req, res, next) {
     return next();
 });
 
+groups.use(function(req, res, next) {
+    res.setHeader("Access-Control-Allow-Headers", "content-type");
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    if(req.headers.origin == "localhost") {
+        res.setHeader("Access-Control-Allow-Origin", "http://localhost");
+    }else{
+        res.setHeader("Access-Control-Allow-Origin", "http://mkmathur.github.io");
+    }
+    return next();
+});
+
 // DATABASE
 var dbURI;
 dbURI = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/badger' ;
