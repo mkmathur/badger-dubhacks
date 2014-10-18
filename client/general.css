@@ -1,5 +1,7 @@
 html, body, form{
 	height: 100%;
+	padding: 0;
+	margin: 0;
 }
 
 body{
@@ -8,14 +10,16 @@ body{
 	font-family: "Helvetica Neue", sans-serif;
 }
 
+h1{
+	font-size: 2em;
+}
+
 body, div, form{
 	text-align: center;
 }
 
-button{
-	display: inline-block;
-	width: 33%;
-	cursor: pointer;
+form{
+	margin-top: 2em;
 }
 
 form > label{
@@ -23,21 +27,24 @@ form > label{
 }
 
 label{
-	width: 80%;
-	font-weight: bold;
+	width: 90%;
 	font-size: 1.5em;
-	margin: 1em;
-	text-align: right;
+	margin-bottom: 2em;
+	text-align: left;
 }
 
-input, select{
-	margin-left: 1em;
+input, select, button{
 	height: 2em;
-	width: 40%;
+	width: 100%;
 }
+
+input, select, button, label{
+	margin-left: 1em;
+}
+
 
 form.newTask > *, select.newTask{
-	height: 15%;
+	height: 2em;
 }
 
 form.newTask > label > *{
@@ -54,10 +61,14 @@ input, select{
 }
 
 button{
+	width: 100%;
+	margin-top: 1em;
 	background-color: #8080FF;
-	font-size: 2em;
+	font-size: 1.5em;
 	font-weight: bold;
 	color: white;
+	display: inline-block;
+	cursor: pointer;
 }
 
 button:hover{
