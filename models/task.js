@@ -5,7 +5,7 @@
 
 	TaskSchema = new Schema({
 		name: String,
-		owner: Number,
+		owner: String,
 		owners: [String],
 		dueDate: Date,
 		schedule: Number,

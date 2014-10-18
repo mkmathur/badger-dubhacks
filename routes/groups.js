@@ -55,7 +55,6 @@ router.get('/:id', function(req, res) {
 // makes group with given name
 
 router.post('/', function(req, res) {
-	console.log('omg groups');
 	grp = new Group();
 	grp.name = req.body.name;
 	grp.save(function(err) {
