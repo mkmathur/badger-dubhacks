@@ -1,0 +1,162 @@
+html, body, form{
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+*{
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+}
+
+body{
+	background-color: white;
+	color: black;
+}
+
+hr{
+	height: 0.3em;
+	background-color: #A2A0A0;
+	border: none;
+}
+
+li{
+	list-style-type: none;
+}
+
+h1{
+	font-size: 2em;
+}
+
+body, div, form{
+	text-align: center;
+}
+
+form{
+	margin-top: 2em;
+}
+
+form > label{
+	display: block;
+}
+
+label{
+	width: 90%;
+	font-size: 1.5em;
+	margin-bottom: 2em;
+	text-align: left;
+}
+
+input, select, button, a{
+	height: 2em;
+	width: 100%;
+	color: 606161;
+	background-color: #CECECE;
+	border-radius: 10px;
+	outline: none;
+
+}
+
+input, select, button, label{
+	margin-left: 1em;
+}
+
+.longTitle{
+	font-size: 3em;
+}
+
+#facebook_login{
+	margin: 1em;
+}
+
+form.newTask > *, select.newTask{
+	height: 2em;
+}
+
+label{
+	height: 2em;
+}
+
+label > *{
+	height: 100%;
+}
+
+input, select{
+	font-size: 1.3em;
+}
+
+button{
+	width: 100%;
+	background-color: gray;
+	margin-top: 1em;
+	font-size: 1.5em;
+	font-weight: bold;
+	color: white;
+	display: inline-block;
+	cursor: pointer;
+}
+
+button:hover{
+	background-color: #A2A0A0;
+}
+
+
+/* -----------Low-Res Mobile---------- */
+@media (min-width: 400px){
+	.content_container{
+		width: 400px;
+	}
+
+	label{
+		width: 75%;
+	}
+}
+
+@media (min-height: 600px){
+	.content_container{
+		height: 600px;
+	}
+
+	h1{
+		font-size: 5em;
+	}
+
+	label{
+		font-size: 4em;
+	}
+
+	button{
+		margin-top: 2em;
+		font-size: 1em;
+	}
+}
+
+
+/* -----------iPhone---------- */
+@media (min-width: 600px){
+	.content_container{
+		width: 600px;
+	}
+	
+}
+
+@media (min-height: 900px){
+	.content_container{
+		height: 900px;
+	}
+}
+
+
+/* -----------Tablet---------- */
+@media (min-width: 960px){
+	.content_container{
+		width: 960px;
+	}
+}
+
+@media (min-height: 1200px){
+	.content_container{
+		height: 1200px;
+	}
+
+
+}

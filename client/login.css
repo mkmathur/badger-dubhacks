@@ -1,0 +1,12 @@
+#facebook_login{
+	background-color: blue;
+	color: white;
+	margin: 1em;
+	position: relative;
+	bottom: 5%;
+}
+
+label{
+	margin-left: 0;
+	margin-right: 0;
+}
