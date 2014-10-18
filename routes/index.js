@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-var User = require('../models/user');
+var UserSchema = require('../models/user');
 var mongoose = require('mongoose');
+var session = require('cookie-session');
+var User = mongoose.model("User", UserSchema, "User");
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -41,13 +43,14 @@ passport.use(new FacebookStrategy({
 ));
 
 passport.serializeUser(function(user, done) {
-  done(null, user.fbid);
+	console.log('THE SERIOSLAHHDSKSD');
+	console.log(user);
+  done(null, user._id);
 });
 
 passport.deserializeUser(function(id, done) {
-  User.findOne({ 'fbid': id }, function(err, user) {
-    done(err, user);
-  });
+	console.log('de-id:'+id);
+    done(null, id);
 });
 
 /* GET users listing. */
@@ -58,8 +61,7 @@ router.get('/', function(req, res) {
 // Redirect the user to Facebook for authentication.  When complete,
 // Facebook will redirect the user back to the application at
 //     /auth/facebook/callback
-router.get('/auth/facebook', passport.authenticate('facebook'));
-
+router.get('/auth/facebook', passport.authenticate('facebook')); 
 // Facebook will redirect the user to this URL after approval.  Finish the
 // authentication process by attempting to obtain an access token.  If
 // access was granted, the user will be logged in.  Otherwise,
