@@ -8,11 +8,16 @@
    <link href="login.css" rel="stylesheet" type="text/css"/>
    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
    <script src="controllers.js"></script>
+   <script>
+   function fbLogin(){
+   		window.location.replace("http://aqueous-earth-8550.herokuapp.com/auth/facebook");
+   }
+   </script>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>Login</title>
   </head>
 
-  <body ng-controller="Controller">
-  	<button id="facebook_login"><a href="http://aqueous-earth-8550.herokuapp.com/auth/facebook">Login with Facebook</a></button>
+  <body ng-controller="Controller" class="content_container">
+  	<button id="facebook_login" onclick="fbLogin()"><img src="https://fbstatic-a.akamaihd.net/rsrc.php/v2/y6/r/yeKliSMc_m4.png"/>Login with Facebook</button>
   </body>
 </html>
