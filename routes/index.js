@@ -33,7 +33,7 @@ passport.use(new FacebookStrategy({
 			if(profile.emails != null && profile.emails.length > 0) {
 				u.email = profile.emails.get(0).value;
 			}
-			console.log('u.fbid:'+u.fbid);
+			console.log('u.fbid:'+u.fbid+'; name:'+u.name);
 		    done(null, u);
 		}
 	});
@@ -41,7 +41,7 @@ passport.use(new FacebookStrategy({
 ));
 
 passport.serializeUser(function(user, done) {
-  done(null, user.id);
+  done(null, user.fbid);
 });
 
 passport.deserializeUser(function(id, done) {
