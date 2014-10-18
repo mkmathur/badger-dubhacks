@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-var user = require('../models/user');
+var User = require('../models/user');
 var mongoose = require('mongoose');
 
 /* GET home page. */
@@ -19,21 +19,22 @@ passport.use(new FacebookStrategy({
     callbackURL: "http://0.0.0.0:3000/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-	var User = require('../models/user');
-	User.findOne({ 'id': profile.id }, function (err, user) {
+	User.findOne({ 'fbid': profile.id }, function (err, user) {
 		console.log('profile.id:'+profile.id);
 		if(err) {
 			done(err, profile);
 		} else if(user) {
-			done(null, profile);
+			console.log('user.fbid:'+user.fbid);
+			done(null, user);
 		} else {
 			var u = new User();
-			u.id = profile.id;
+			u.fbid = profile.id;
 			u.name = profile.displayName;
 			if(profile.emails != null && profile.emails.length > 0) {
 				u.email = profile.emails.get(0).value;
 			}
-		    done(null, profile);
+			console.log('u.fbid:'+u.fbid);
+		    done(null, u);
 		}
 	});
   }
@@ -44,7 +45,7 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
+  User.findOne({ 'fbid': id }, function(err, user) {
     done(err, user);
   });
 });
