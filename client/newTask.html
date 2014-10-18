@@ -13,8 +13,8 @@
   </head>
 
   <body ng-controller="Controller">
-    <div>
-      <form id="new_task_input" class="newTask">
+    <div class="content_container">
+      <form id="new_task_input" class="newTask" method="POST" action="/groups/group_id/task">
         <label for="name">Task Name<input type="text" name="name" /></label>
         <label for="nextDue">This task is due... <input type="date" name="nextDue" /></label>
         <label for="recurrence">
@@ -26,6 +26,7 @@
             <option value="MONTHLY">Monthly</option>
           </select>
         </label>
+        <label for="submit_button"></label><button name="submit_button" type="submit">Create Task</button></label>
       </form>
     </div>
   </body>

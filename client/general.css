@@ -13,15 +13,12 @@ body, div, form{
 }
 
 button{
-	height: 3em;
+	display: inline-block;
 	width: 33%;
-	top: 45%;
-	left: 33%;
-	position: absolute;
 	cursor: pointer;
 }
 
-form > *{
+form > label{
 	display: block;
 }
 
@@ -49,6 +46,63 @@ form.newTask > label > *{
 
 button, input, select{
 	border-radius: 10px;
-	font-size: 1.4em;
 	outline: none;
+}
+
+input, select{
+	font-size: 1.3em;
+}
+
+button{
+	background-color: #8080FF;
+	font-size: 2em;
+	font-weight: bold;
+	color: white;
+}
+
+button:hover{
+	background-color: #B3B3FF;
+}
+
+
+/* -----------Low-Res Mobile---------- */
+@media (min-width: 400px){
+	.content_container{
+		width: 400px;
+	}
+}
+
+@media (min-height: 600px){
+	.content_container{
+		height: 600px;
+	}
+}
+
+
+/* -----------iPhone---------- */
+@media (min-width: 600px){
+	.content_container{
+		width: 600px;
+	}
+	
+}
+
+@media (min-height: 900px){
+	.content_container{
+		height: 900px;
+	}
+}
+
+
+/* -----------Tablet---------- */
+@media (min-width: 960px){
+	.content_container{
+		width: 960px;
+	}
+}
+
+@media (min-height: 1200px){
+	.content_container{
+		height: 1200px;
+	}
 }
