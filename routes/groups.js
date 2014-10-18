@@ -62,7 +62,6 @@ router.post('/', function(req, res /*, next*/) {
 		if(err) res.send(err);
 		else res.send({ 'group' : grp });
 	});
-	req.user.groups.push(grp.id);
 	console.log(grp);
 	// next();
 
