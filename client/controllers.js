@@ -38,6 +38,18 @@ myApp.controller('Controller', ['$scope', '$http', '$location', function($scope,
 			id: 1
 		},
 		{
+			name: "Feed your  tummy",
+			comments: [
+				{
+					text: "I refuse",
+					author: "Jackp"
+				}
+			],
+			owner: "Jackp",
+			time: 0,
+			id: 1
+		},
+		{
 			name: "do the laundry, bitch",
 			comments: [
 				{
