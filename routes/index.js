@@ -18,8 +18,8 @@ passport.use(new FacebookStrategy({
     callbackURL: "http://0.0.0.0:3000/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-    user.findOrCreate(profile);
-    done(null, profile); // FIND/CREATE USER HERE
+//  user.findOrCreate(profile, done);
+    done(null, profile);
   }
 ));
 
