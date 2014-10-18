@@ -31,13 +31,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-
-app.use('/', routes);
-app.use('/users', users);
-app.use('/groups', groups);
-app.use('/tasks', tasks);
-
 app.use(function(req, res, next) {
     res.setHeader("Access-Control-Allow-Headers", "Content-type");
     res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -48,6 +41,13 @@ app.use(function(req, res, next) {
     }
     return next();
 });
+
+app.use('/', routes);
+app.use('/users', users);
+app.use('/groups', groups);
+app.use('/tasks', tasks);
+
+
 
 // DATABASE
 var dbURI;
