@@ -1,0 +1,14 @@
+body{
+	background-color: #8C8CFF;
+	text-align: center;
+	height: 100%;
+}
+
+button{
+	border-radius: 10px;
+	height: 3em;
+	width: 33%;
+	top: 45%;
+	left: 33%;
+	position: absolute;
+}
