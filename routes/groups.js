@@ -61,14 +61,12 @@ router.post('/', function(req, res /*, next*/) {
 	grp.name = req.body.name;
 	grp.members.push(req.user.fbid);
 	grp.save(function(err) {
-		if(err) res.send(err);
-		else res.send({ 'group' : grp });
+		
 	});
 	u = req.user;
 	u.groups.push(grp.id);
 	u.save(function(err) {
-		if(err) res.send(err);
-		else res.json({ 'user' : u });
+		
 	});
 	// next();
 });
