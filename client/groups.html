@@ -17,7 +17,12 @@
   			<div class="groupName">{{group.name}}</div>
   			<div class="newTasksNum">{{group.newTasks + " new tasks"}}</div>
 	  	</li>
-	  	<li>Create New Group</li>
+	  	<li>
+	  		<form>
+	  			<label for="name">Group Name<input type="text" name="name" id="groupNameInput"/></label>
+	  			<button id="createNewGroup" ng-click="createNewGroup()">Create New Group</button>
+	  		</form>
+	  	</li>
   	</ul>
   </body>
 </html>

@@ -21,12 +21,13 @@
   			</div>
   			<ul class="comments">
   				<li ng-repeat="comment in task.comments">
-	  				{{comment.text + " -" + comment.author}}
+  					<div class="commentText">{{comment.text}}</div>
+  					<div class="commentAuthor">{{"-" + comment.author}}</div>
 	  			</li>
 	  			<li>
 	  				<form class="commentInput" ng-submit="submitComment($event, task.id)">
-	  					<textarea placeholder="Add comment..."></textarea>
-	  					<input type="submit"></input>
+	  					<textarea placeholder="Speak yo mind"></textarea>
+	  					<button type="submit">Add comment</button>
 	  				</form>
 	  			</li>
   			</ul>
