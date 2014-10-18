@@ -72,6 +72,7 @@ router.get('/auth/facebook/callback',
 
 router.get('/success', function(req, res) {
 	console.log('req.user:'+req.user);
+	res.send('success!');
 });
 
 module.exports = router;
