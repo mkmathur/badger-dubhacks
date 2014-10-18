@@ -81,11 +81,28 @@ button:hover{
 	.content_container{
 		width: 400px;
 	}
+
+	label{
+		width: 75%;
+	}
 }
 
 @media (min-height: 600px){
 	.content_container{
 		height: 600px;
+	}
+
+	h1{
+		font-size: 5em;
+	}
+
+	label{
+		font-size: 4em;
+	}
+
+	button{
+		margin-top: 2em;
+		font-size: 1em;
 	}
 }
 
@@ -116,4 +133,6 @@ button:hover{
 	.content_container{
 		height: 1200px;
 	}
+
+
 }
