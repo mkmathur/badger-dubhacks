@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.all('/', function(req, res, next) {
+var setHeaders = function(req, res, next) {
     res.setHeader("Access-Control-Allow-Headers", "Content-type");
     res.setHeader("Access-Control-Allow-Credentials", "true");
     if(req.headers.origin == "localhost") {
@@ -40,8 +40,9 @@ app.all('/', function(req, res, next) {
         res.setHeader("Access-Control-Allow-Origin", "http://mkmathur.github.io");
     }
     return next();
-});
+}
 
+app.use(setHeaders());
 app.use('/', routes);
 app.use('/users', users);
 app.use('/groups', groups);
