@@ -15,9 +15,8 @@
   	<h1 class="longTitle">Hello {{user.name}}, you're logged in! And beautiful.</h1>
     <hr/>
   	<ul>
-  		<li ng-repeat="group in user.groups" ng-class="groupListItem">
-  			<a class="groupName" href="tasks.html" ng-click="setGroup(group.name)">{{group.name}}</a>
-  			<div class="newTasksNum">{{group.newTasks + " new tasks"}}</div>
+  		<li ng-repeat="grp in user.groups" ng-class="groupListItem">
+  			<a class="groupName" href="tasks.html" ng-click="setGroup(grp)">{{grp.name}}</a>
 	  	</li>
   	</ul>
     <form>

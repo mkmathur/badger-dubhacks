@@ -46,9 +46,9 @@ myApp.controller('Controller', ['$scope', '$http', '$location', function($scope,
 				}
 			],
 			owner: "Jackp",
-			time: 0,
-			id: 1
-		},
+				time: 0,
+				id: 1
+			},
 		{
 			name: "do the laundry, bitch",
 			comments: [
@@ -83,7 +83,7 @@ myApp.controller('Controller', ['$scope', '$http', '$location', function($scope,
 		var target = event.target || event.srcElement;
 		target = target.querySelector("textarea");
 		var url = baseAPIUrl + "/tasks/" + taskId + "/comment";
-		$http.post(url, target.value).
+		$http.post(url, {comment: target.value}).
 			success(function(data, status, headers, config) {
 		    // this callback will be called asynchronously
 		    // when the response is available
@@ -97,10 +97,12 @@ myApp.controller('Controller', ['$scope', '$http', '$location', function($scope,
 	$scope.createNewGroup = function() {
 		var groupName = document.getElementById("groupNameInput").value;
 		var url = baseAPIUrl + "/groups";
-		$http.post(url, groupName, {withCredentials: true}).
+		$http.post(url, { name: groupName }, {withCredentials: true}).
 			success(function(data, status, headers, config) {
-		    // this callback will be called asynchronously
-		    // when the response is available
+				$http.post(baseAPIUrl + "groups/add/" + data.group._id).success(function(data) {
+
+				})
+		    $scope.user.groups.push(data.group);
 		  }).
 		  error(function(data, status, headers, config) {
 		    // called asynchronously if an error occurs
@@ -122,4 +124,22 @@ myApp.controller('Controller', ['$scope', '$http', '$location', function($scope,
 			  });
 			}
 	}
+
+	$scope.initTasksData = function() {
+		$http.get(baseAPIUrl + "/groups/" + $scope.group.id, {withCredentials: true}).
+				success(function(data) {
+			    // this callback will be called asynchronously
+			    // when the response is available
+			    $scope.tasks = {};
+			    for (var taskId in data.tasks) {
+			    	$http.get(baseAPIUrl + "/tasks", {withCredentials: true}).
+							success(function(data) {
+						    // this callback will be called asynchronously
+						    // when the response is available
+						    $scope.tasks[taskId] = data;
+						  });
+			    }
+			});
+	}
+
 }]);

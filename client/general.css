@@ -64,6 +64,9 @@ input, select, button, label{
 	font-size: 3em;
 }
 
+#facebook_login{
+	margin: 1em;
+}
 
 form.newTask > *, select.newTask{
 	height: 2em;
