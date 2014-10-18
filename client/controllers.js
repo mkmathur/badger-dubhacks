@@ -100,6 +100,7 @@ myApp.controller('Controller', ['$scope', '$http', '$location', function($scope,
 		$http.post(url, { name: groupName }, {withCredentials: true}).
 			success(function(data, status, headers, config) {
 		    $scope.user.groups.push(data);
+		    console.log($scope.user.groups)
 		  }).
 		  error(function(data, status, headers, config) {
 		    // called asynchronously if an error occurs
@@ -138,5 +139,5 @@ myApp.controller('Controller', ['$scope', '$http', '$location', function($scope,
 			    }
 			});
 	}
-	
+
 }]);
