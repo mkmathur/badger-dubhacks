@@ -33,9 +33,9 @@ app.use(passport.session());
 
 app.use(function(req, res, next) {
     if(req.headers.origin == "localhost") {
-        res.setHeader("Access-Control-Allow-Origin", "localhost");
+        res.setHeader("Access-Control-Allow-Origin", "http://localhost");
     }else{
-        res.setHeader("Access-Control-Allow-Origin", "mkmathur.github.io");
+        res.setHeader("Access-Control-Allow-Origin", "http://mkmathur.github.io");
     }
     return next();
 });
