@@ -23,6 +23,12 @@
   				<li ng-repeat="comment in task.comments">
 	  				{{comment.text + " -" + comment.author}}
 	  			</li>
+	  			<li>
+	  				<form class="commentInput" ng-submit="submitComment($event, task.id)">
+	  					<textarea placeholder="Add comment..."></textarea>
+	  					<input type="submit"></input>
+	  				</form>
+	  			</li>
   			</ul>
   		</div>
   	</div>

@@ -34,7 +34,8 @@ myApp.controller('Controller', ['$scope', '$http', function($scope, $http) {
 				}
 			],
 			owner: "Joe",
-			time: 0 
+			time: 0,
+			id: 1
 		},
 		{
 			name: "do the laundry, bitch",
@@ -45,7 +46,8 @@ myApp.controller('Controller', ['$scope', '$http', function($scope, $http) {
 				}
 			],
 			owner: "Jim",
-			time: 0 
+			time: 0,
+			id: 2
 		}
 	];
 
@@ -54,29 +56,44 @@ myApp.controller('Controller', ['$scope', '$http', function($scope, $http) {
 	$scope.facebookLogin = function() {
 		$http.get(baseAPIUrl + "/auth/facebook").
 			success(function(data, status, headers, config) {
-	    // this callback will be called asynchronously
-	    // when the response is available
-	    getGroups(function() {
-	    	// TODO: get user name and redirect to groups page
-	    });
-	  }).
-	  error(function(data, status, headers, config) {
-	    // called asynchronously if an error occurs
-	    // or server returns response with an error status.
-	  });
+		    // this callback will be called asynchronously
+		    // when the response is available
+		    getGroups(function() {
+		    	// TODO: get user name and redirect to groups page
+		    });
+		  }).
+		  error(function(data, status, headers, config) {
+		    // called asynchronously if an error occurs
+		    // or server returns response with an error status.
+		  });
 	}
 
 	function getGroups(callback) {
 		$http.get(baseAPIUrl + "/groups").
 			success(function(data, status, headers, config) {
-	    // this callback will be called asynchronously
-	    // when the response is available
-	    $scope.groups = data;
-	    callback();
-	  }).
-	  error(function(data, status, headers, config) {
-	    // called asynchronously if an error occurs
-	    // or server returns response with an error status.
-	  });
+		    // this callback will be called asynchronously
+		    // when the response is available
+		    $scope.groups = JSON.parse(data);
+		    callback();
+		  }).
+		  error(function(data, status, headers, config) {
+		    // called asynchronously if an error occurs
+		    // or server returns response with an error status.
+		  });
+	}
+
+	$scope.submitComment = function(event, taskId) {
+		var target = event.target || event.srcElement;
+		target = target.querySelector("textarea");
+		var url = baseAPIUrl + "/tasks/" + taskId + "/comment";
+		$http.post(url, target.value).
+			success(function(data, status, headers, config) {
+		    // this callback will be called asynchronously
+		    // when the response is available
+		  }).
+		  error(function(data, status, headers, config) {
+		    // called asynchronously if an error occurs
+		    // or server returns response with an error status.
+		  });
 	}
 }]);
