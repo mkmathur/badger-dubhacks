@@ -47,8 +47,6 @@ app.use('/users', users);
 app.use('/groups', groups);
 app.use('/tasks', tasks);
 
-
-
 // DATABASE
 var dbURI;
 dbURI = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/badger' ;
