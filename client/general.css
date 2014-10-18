@@ -46,7 +46,7 @@ label{
 	text-align: left;
 }
 
-input, select, button{
+input, select, button, a{
 	height: 2em;
 	width: 100%;
 	color: 606161;
@@ -60,12 +60,20 @@ input, select, button, label{
 	margin-left: 1em;
 }
 
+.longTitle{
+	font-size: 3em;
+}
+
 
 form.newTask > *, select.newTask{
 	height: 2em;
 }
 
-form.newTask > label > *{
+label{
+	height: 2em;
+}
+
+label > *{
 	height: 100%;
 }
 

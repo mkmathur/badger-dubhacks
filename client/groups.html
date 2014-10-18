@@ -12,7 +12,8 @@
   </head>
 
   <body ng-controller="Controller" ng-init="initUserData()" class="content_container">
-  	<div>Hello {{user.name}}, you're logged in! And beautiful.</div>
+  	<h1 class="longTitle">Hello {{user.name}}, you're logged in! And beautiful.</h1>
+    <hr/>
   	<ul>
   		<li ng-repeat="grp in user.groups" ng-class="groupListItem">
   			<a class="groupName" href="tasks.html" ng-click="setGroup(grp)">{{grp.name}}</a>
@@ -20,7 +21,11 @@
   	</ul>
     <form>
       <label for="name">Group Name<input type="text" name="name" id="groupNameInput"/></label>
-      <button id="createNewGroup" ng-click="createNewGroup()">Create New Group</button>
+      
+      <label for="createNewGroup">
+      <button id="createNewGroup" name="createNewGroup" ng-click="createNewGroup()">Create New Group</button>
+      </label>
+
     </form>
   </body>
 </html>
