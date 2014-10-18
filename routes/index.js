@@ -63,7 +63,7 @@ router.get('/auth/facebook', passport.authenticate('facebook'));
 // access was granted, the user will be logged in.  Otherwise,
 // authentication has failed.
 router.get('/auth/facebook/callback', 
-  passport.authenticate('facebook', { successRedirect: '/client/groups',
+  passport.authenticate('facebook', { successRedirect: '/client/groups.html',
                                       failureRedirect: '/' }));
 
 router.get('/success', function(req, res) {
