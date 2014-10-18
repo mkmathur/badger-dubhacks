@@ -48,7 +48,7 @@ router.get('/', function(req, res) {
 //     adds the user to the group
 
 router.post('/add/:gid', function(req, res) {
-	Group.findById(req.body.gid, function(err, g) {
+	Group.findById(req.params.gid, function(err, g) {
 		if (err) res.send(err);
 		else {
 			g.members.push(req.user.fbid);
