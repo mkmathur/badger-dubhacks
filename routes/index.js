@@ -71,6 +71,7 @@ router.get('/grppage', function(req, res) {
 });
 
 router.get('/success', function(req, res) {
+	console.log("Success!!!!!!!!!!");
 	User.findById(req.user, function(err, user) { 
 		res.json({ 'user' : user });
 	});
