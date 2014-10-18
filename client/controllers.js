@@ -99,7 +99,7 @@ myApp.controller('Controller', ['$scope', '$http', '$location', function($scope,
 		var url = baseAPIUrl + "/groups";
 		$http.post(url, { name: groupName }, {withCredentials: true}).
 			success(function(data, status, headers, config) {
-		    $scope.user.groups.push(data);
+		    $scope.user.groups.push(data.group);
 		    console.log($scope.user.groups)
 		  }).
 		  error(function(data, status, headers, config) {
