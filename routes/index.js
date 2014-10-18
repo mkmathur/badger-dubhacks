@@ -53,11 +53,6 @@ passport.deserializeUser(function(id, done) {
     done(null, id);
 });
 
-/* GET users listing. */
-router.get('/', function(req, res) {
-  res.send('respond with a resource');
-});
-
 // Redirect the user to Facebook for authentication.  When complete,
 // Facebook will redirect the user back to the application at
 //     /auth/facebook/callback
