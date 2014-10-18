@@ -85,7 +85,7 @@ myApp.controller('Controller', ['$scope', '$http', '$location', function($scope,
 	$scope.createNewGroup = function() {
 		var groupName = document.getElementById("groupNameInput").value;
 		var url = baseAPIUrl + "/groups";
-		$http.post(url, groupName).
+		$http.post(url, groupName, {withCredentials: true}).
 			success(function(data, status, headers, config) {
 		    // this callback will be called asynchronously
 		    // when the response is available
