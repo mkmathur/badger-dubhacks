@@ -101,6 +101,7 @@ myApp.controller('Controller', ['$scope', '$http', '$location', function($scope,
 	}
 
 	$scope.initUserData = function() {
+		alert("init")
 		if (!$scope.user) {
 			$http.get(baseAPIUrl + "/success").
 				success(function(data) {
