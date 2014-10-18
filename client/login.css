@@ -1,9 +1,14 @@
 #facebook_login{
-	background-color: blue;
+	height: 2em;
+	background-color: #36609F;
 	color: white;
 	margin: 1em;
-	position: relative;
-	bottom: 5%;
+}
+
+#f_logo{
+	height: 80%;
+	width: 2em;
+	vertical-align: bottom;
 }
 
 label{
