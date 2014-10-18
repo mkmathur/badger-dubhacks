@@ -56,15 +56,16 @@ router.get('/:id', function(req, res /*, next*/) {
 // makes group with given name
 
 router.post('/', function(req, res /*, next*/) {
-	console.log('asldkfjladksfg');
 	grp = new Group();
 	grp.name = req.body.name;
 	grp.save(function(err) {
 		if(err) res.send(err);
 		else res.send({ 'group' : grp });
 	});
-	console.log('i sent headers!!!');
+	console.log(grp);
+	res.json({'group' : grp })
 	// next();
+
 });
 
 router.get('/', function(req, res /*, next*/) {
