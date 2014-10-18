@@ -21,7 +21,7 @@ router.post('/add/:gid', function(req, res /*, next*/) {
 		}
 	});
 	u = req.user;
-	u.members.push(req.body.gid);
+	u.groups.push(req.body.gid);
 	u.save(function(err) {
 		if(err) res.send(err);
 		else res.json({ 'user' : u });
@@ -62,6 +62,7 @@ router.post('/', function(req, res /*, next*/) {
 		if(err) res.send(err);
 		else res.send({ 'group' : grp });
 	});
+	req.user.groups.push(grp.id);
 	console.log(grp);
 	// next();
 
