@@ -1,6 +1,6 @@
 var myApp = angular.module('myApp',[]);
 
-myApp.controller('Controller', ['$scope', function($scope) {
+myApp.controller('Controller', ['$scope', '$http', function($scope, $http) {
 	$scope.groups = [
 		{
 			name: "Family",
@@ -48,4 +48,35 @@ myApp.controller('Controller', ['$scope', function($scope) {
 			time: 0 
 		}
 	];
+
+	var baseAPIUrl = "http://aqueous-earth-8550.herokuapp.com";
+
+	$scope.facebookLogin = function() {
+		$http.get(baseAPIUrl + "/auth/facebook").
+			success(function(data, status, headers, config) {
+	    // this callback will be called asynchronously
+	    // when the response is available
+	    getGroups(function() {
+	    	// TODO: get user name and redirect to groups page
+	    });
+	  }).
+	  error(function(data, status, headers, config) {
+	    // called asynchronously if an error occurs
+	    // or server returns response with an error status.
+	  });
+	}
+
+	function getGroups(callback) {
+		$http.get(baseAPIUrl + "/groups").
+			success(function(data, status, headers, config) {
+	    // this callback will be called asynchronously
+	    // when the response is available
+	    $scope.groups = data;
+	    callback();
+	  }).
+	  error(function(data, status, headers, config) {
+	    // called asynchronously if an error occurs
+	    // or server returns response with an error status.
+	  });
+	}
 }]);
