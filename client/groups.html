@@ -11,10 +11,10 @@
     <title>Title Here</title>
   </head>
 
-  <body ng-controller="Controller">
+  <body ng-controller="Controller" ng-init="initUserData()">
   	<ul>
   		<li ng-repeat="group in groups" ng-class="groupListItem">
-  			<div class="groupName">{{group.name}}</div>
+  			<a class="groupName" href="tasks.html" ng-click="setGroup(group.name)">{{group.name}}</a>
   			<div class="newTasksNum">{{group.newTasks + " new tasks"}}</div>
 	  	</li>
 	  	<li>

@@ -1,6 +1,6 @@
 var myApp = angular.module('myApp',[]);
 
-myApp.controller('Controller', ['$scope', '$http', function($scope, $http) {
+myApp.controller('Controller', ['$scope', '$http', '$location', function($scope, $http, $location) {
 	$scope.groups = [
 		{
 			name: "Family",
@@ -53,21 +53,6 @@ myApp.controller('Controller', ['$scope', '$http', function($scope, $http) {
 
 	var baseAPIUrl = "http://aqueous-earth-8550.herokuapp.com";
 
-	$scope.facebookLogin = function() {
-		$http.get(baseAPIUrl + "/auth/facebook").
-			success(function(data, status, headers, config) {
-		    // this callback will be called asynchronously
-		    // when the response is available
-		    getGroups(function() {
-		    	// TODO: get user name and redirect to groups page
-		    });
-		  }).
-		  error(function(data, status, headers, config) {
-		    // called asynchronously if an error occurs
-		    // or server returns response with an error status.
-		  });
-	}
-
 	function getGroups(callback) {
 		$http.get(baseAPIUrl + "/groups").
 			success(function(data, status, headers, config) {
@@ -109,5 +94,23 @@ myApp.controller('Controller', ['$scope', '$http', function($scope, $http) {
 		    // called asynchronously if an error occurs
 		    // or server returns response with an error status.
 		  });
+	}
+
+	$scope.setGroup = function(group) {
+		$scope.group = group;
+	}
+
+	$scope.initUserData = function() {
+		if (!$scope.user) {
+			$http.get(baseAPIUrl + "/success").
+				success(function(data) {
+			    // this callback will be called asynchronously
+			    // when the response is available
+			    getGroups(function() {
+			    	// TODO: get user name and redirect to groups page
+			    	$scope.user = JSON.parse(data).user;
+			    });
+			  });
+			}
 	}
 }]);
