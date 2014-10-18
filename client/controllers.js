@@ -107,7 +107,7 @@ myApp.controller('Controller', ['$scope', '$http', '$location', function($scope,
 			    // this callback will be called asynchronously
 			    // when the response is available
 			    $scope.user = data.user;
-			    console.log($scope.user);
+			    console.log(data);
 			    console.log("worked")
 			  });
 			}
