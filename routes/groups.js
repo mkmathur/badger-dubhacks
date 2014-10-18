@@ -63,7 +63,6 @@ router.post('/', function(req, res /*, next*/) {
 		else res.send({ 'group' : grp });
 	});
 	console.log(grp);
-	res.json({'group' : grp })
 	// next();
 
 });
