@@ -9,7 +9,7 @@ var User = mongoose.model('User', UserSchema, 'User');
 // POST /groups/add/:gid
 //     adds the user to the group
 
-router.post('/add/:gid', function(req, res, next) {
+router.post('/add/:gid', function(req, res /*, next*/) {
 	Group.findById(req.params.gid, function(err, g) {
 		if (err) res.send(err);
 		else {
@@ -26,7 +26,7 @@ router.post('/add/:gid', function(req, res, next) {
 		if(err) res.send(err);
 		else res.json({ 'user' : u });
 	});
-	next();
+	// next();
 });
 
 // SPECCCCCC
@@ -39,14 +39,14 @@ router.post('/add/:gid', function(req, res, next) {
 //     tasks: list of int ids
 // }
 
-router.get('/:id', function(req, res, next) {
+router.get('/:id', function(req, res /*, next*/) {
 	u = req.user;
 	id = req.params.id;
 	Group.findById(id, function (err, g) {
 		if (err) res.send(err);
 		else res.json({ 'group' : g });
 	});
-	next();
+	// next();
 });
 
 // POST /groups/
@@ -55,7 +55,7 @@ router.get('/:id', function(req, res, next) {
 //     name: the name of the group
 // makes group with given name
 
-router.post('/', function(req, res, next) {
+router.post('/', function(req, res /*, next*/) {
 	console.log('asldkfjladksfg');
 	grp = new Group();
 	grp.name = req.body.name;
@@ -64,12 +64,12 @@ router.post('/', function(req, res, next) {
 		else res.send({ 'group' : grp });
 	});
 	console.log('i sent headers!!!');
-	next();
+	// next();
 });
 
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res /*, next*/) {
 	res.json({ 'groups' : req.user.groups });
-	next();
+	// next();
 });
 
 
