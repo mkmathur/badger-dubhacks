@@ -83,7 +83,7 @@ myApp.controller('Controller', ['$scope', '$http', '$location', function($scope,
 		var target = event.target || event.srcElement;
 		target = target.querySelector("textarea");
 		var url = baseAPIUrl + "/tasks/" + taskId + "/comment";
-		$http.post(url, target.value).
+		$http.post(url, {comment: target.value}).
 			success(function(data, status, headers, config) {
 		    // this callback will be called asynchronously
 		    // when the response is available
@@ -99,8 +99,7 @@ myApp.controller('Controller', ['$scope', '$http', '$location', function($scope,
 		var url = baseAPIUrl + "/groups";
 		$http.post(url, { name: groupName }, {withCredentials: true}).
 			success(function(data, status, headers, config) {
-		    // this callback will be called asynchronously
-		    // when the response is available
+		    $scope.user.groups.push(data);
 		  }).
 		  error(function(data, status, headers, config) {
 		    // called asynchronously if an error occurs
